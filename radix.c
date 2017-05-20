@@ -1,26 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #define DIGITS 10	// the number of digits in base 10
 
 // get number of digits in a given unsigned long integer
 int getNumOfDigits(unsigned long n) {
-	int amount = 1;				// amount of digits
-	unsigned long place = 1;	// place value
-
-	if (n == 0) {	// special case: 0
-		return 1;
-	}
-
-	while (1) {
-		if (n >= place && n < (place * DIGITS)) {	// if in this range, return amount
-			return amount;
-		} else {									// otherwise increment range and amount of digits
-			place *= DIGITS;
-			amount++;
-		}
-	}
+	return floor(log(n)) + 1.0;
 }
 
 // get the highest amount of digits in a given array
